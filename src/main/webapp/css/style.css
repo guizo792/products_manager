@@ -5,3 +5,7 @@
 .container {
 	margin: 5px auto;
 }
+
+a:hover {
+	text-decoration: none !important;
+}

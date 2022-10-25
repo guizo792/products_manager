@@ -57,19 +57,55 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit getProduit(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Produit p = null;
+		Connection connection = SingletonConnection.getConnection();
+		try {
+			PreparedStatement ps = connection.prepareStatement("SELECT * FROM PRODUITS WHERE ID=?");
+			ps.setDouble(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				p = new Produit();
+				p.setId(rs.getLong("ID"));
+				p.setDesignation(rs.getString("DESIGNATION"));
+				p.setPrix(rs.getDouble("PRIX"));
+				p.setQuantite(rs.getInt("QUANTITE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 
 	@Override
 	public Produit updateProduit(Produit p) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = SingletonConnection.getConnection();
+		try {
+			PreparedStatement ps = connection
+					.prepareStatement("UPDATE PRODUITS SET DESIGNATION=?,PRIX=?,QUANTITE=? WHERE ID=?");
+			ps.setString(1, p.getDesignation());
+			ps.setDouble(2, p.getPrix());
+			ps.setInt(3, p.getQuantite());
+			ps.setLong(4, p.getId());
+			ps.executeUpdate();
+			ps.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 
 	@Override
 	public void deleteProduit(Long id) {
-		// TODO Auto-generated method stub
+		Connection connection = SingletonConnection.getConnection();
+		try {
+			PreparedStatement ps = connection.prepareStatement("DELETE FROM PRODUITS WHERE ID=?");
+			ps.setLong(1, id);
+
+			ps.executeUpdate();
+			ps.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

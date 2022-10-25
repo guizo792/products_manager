@@ -7,31 +7,33 @@ import metier.entities.Produit;
 
 public class ProduitModel {
 
-		private String motCle;
-		private List<Produit> produits = new ArrayList<Produit>();
-		public ProduitModel() {
-			
-		}
-		public ProduitModel(String motCle, List<Produit> produits) {
-			
-			this.motCle = motCle;
-			this.produits = produits;
-		}
-		public String getMotCle() {
-			return motCle;
-		}
-		public void setMotCle(String motCle) {
-			this.motCle = motCle;
-		}
-		public List<Produit> getProduits() {
-			return produits;
-		}
-		public void setProduits(List<Produit> produits) {
-			this.produits = produits;
-		}
-		
-		
-		
+	private String motCle;
+	private List<Produit> produits = new ArrayList<Produit>();
 
+	public ProduitModel() {
+
+	}
+
+	public ProduitModel(String motCle, List<Produit> produits) {
+
+		this.motCle = motCle;
+		this.produits = produits;
+	}
+
+	public String getMotCle() {
+		return motCle;
+	}
+
+	public void setMotCle(String motCle) {
+		this.motCle = motCle;
+	}
+
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
 
 }
