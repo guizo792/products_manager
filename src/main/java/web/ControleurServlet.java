@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.connector.Response;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import dao.IProduitDao;
 import dao.ProduitDaoImpl;
@@ -21,7 +24,10 @@ public class ControleurServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		metier = new ProduitDaoImpl();
+//		metier = new ProduitDaoImpl();
+		ApplicationContext springContext = (ApplicationContext) WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
+//		metier = (IProduitDao) (((BeanFactory) springContext).getBean("dao"));
+		metier = ((BeanFactory) springContext).getBean(IProduitDao.class);
 	}
 
 	@Override

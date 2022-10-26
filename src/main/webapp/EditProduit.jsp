@@ -16,7 +16,8 @@
 					<div class="form-group">
 						<label class="control-label">ID</label> <input type="text"
 							name="id" value="${produit.getId()}" class="form-control"
-							required /> <span></span>
+							required />
+							<label>${produit.getId() }</label> <span></span>
 					</div>
 					<div class="form-group">
 						<label class="control-label">Designation</label> <input

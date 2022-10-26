@@ -108,5 +108,9 @@ public class ProduitDaoImpl implements IProduitDao {
 		}
 
 	}
+	
+	public void init() {
+		System.out.println("Intialization...");
+	}
 
 }
